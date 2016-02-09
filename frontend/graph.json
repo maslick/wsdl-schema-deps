@@ -1,0 +1,263 @@
+nodes = [
+{
+"parent": [],
+"id": 1,
+"label": "http://mnz.si/storitve/rijs/organ/v1",
+"value": 5
+},
+{
+"parent": [],
+"id": 2,
+"label": "http://mnz.si/sheme/rijs/registri/v1",
+"value": 5
+},
+{
+"parent": [],
+"id": 3,
+"label": "http://mnz.si/sheme/rijs/sifranti/v1",
+"value": 5
+},
+{
+"parent": [],
+"id": 4,
+"label": "http://mnz.si/sheme/skupno/splosno/v1",
+"value": 5
+},
+{
+"parent": [
+"http://mnz.si/sheme/rijs/registri/v1",
+"http://mnz.si/sheme/rijs/sifranti/v1",
+"http://mnz.si/sheme/skupno/splosno/v1"
+],
+"id": 5,
+"label": "http://mnz.si/sheme/rijs/registri/sporocila/v1",
+"value": 5
+},
+{
+"parent": [
+"http://mnz.si/sheme/rijs/sifranti/v1",
+"http://mnz.si/sheme/skupno/splosno/v1"
+],
+"id": 6,
+"label": "http://mnz.si/sheme/rijs/sifranti/sporocila/v1",
+"value": 5
+},
+{
+"parent": [
+"http://mnz.si/sheme/rijs/registri/v1",
+"http://mnz.si/sheme/skupno/splosno/v1",
+"http://mnz.si/sheme/rijs/sifranti/v1"
+],
+"id": 7,
+"label": "http://mnz.si/sheme/rijs/procesi/v1",
+"value": 5
+},
+{
+"parent": [
+"http://mnz.si/sheme/rijs/registri/v1",
+"http://mnz.si/sheme/rijs/procesi/v1",
+"http://mnz.si/sheme/skupno/splosno/v1",
+"http://mnz.si/sheme/rijs/sifranti/v1",
+"http://mnz.si/sheme/rijs/registri/sporocila/v1",
+"http://mnz.si/sheme/rijs/sifranti/sporocila/v1"
+],
+"id": 8,
+"label": "http://mnz.si/sheme/rijs/procesi/sporocila/v1",
+"value": 5
+},
+{
+"parent": [
+"http://mnz.si/sheme/skupno/splosno/v1"
+],
+"id": 9,
+"label": "http://mnz.si/sheme/rijs/osvezevanje/v1",
+"value": 5
+},
+{
+"parent": [
+"http://mnz.si/sheme/skupno/splosno/v1",
+"http://mnz.si/sheme/rijs/osvezevanje/v1",
+"http://mnz.si/sheme/rijs/registri/v1"
+],
+"id": 10,
+"label": "http://mnz.si/sheme/rijs/osvezevanje/sporocila/v1",
+"value": 5
+},
+{
+"parent": [
+"http://mnz.si/sheme/rijs/sifranti/v1",
+"http://mnz.si/sheme/skupno/splosno/v1",
+"http://mnz.si/sheme/rijs/registri/v1"
+],
+"id": 11,
+"label": "http://mnz.si/sheme/rijs/mediacije/rpe/sporocila/v1",
+"value": 5
+},
+{
+"parent": [
+"http://mnz.si/sheme/skupno/splosno/v1",
+"http://mnz.si/sheme/rijs/registri/v1",
+"http://mnz.si/sheme/rijs/sifranti/v1"
+],
+"id": 12,
+"label": "http://mnz.si/sheme/rijs/mediacije/prs/sporocila/v1",
+"value": 5
+},
+{
+"parent": [
+"http://mnz.si/sheme/skupno/splosno/v1"
+],
+"id": 13,
+"label": "http://mnz.si/sheme/rijs/javno/v1",
+"value": 5
+},
+{
+"parent": [
+"http://mnz.si/sheme/rijs/javno/v1",
+"http://mnz.si/sheme/skupno/splosno/v1"
+],
+"id": 14,
+"label": "http://mnz.si/sheme/rijs/javno/sporocila/v1",
+"value": 5
+}
+];
+
+// create connections between people
+// value corresponds with the amount of contact between two people
+edges = [
+{
+"from": 5,
+"to": 2,
+"value": 1,
+},
+{
+"from": 5,
+"to": 3,
+"value": 1
+},
+{
+"from": 5,
+"to": 4,
+"value": 1
+},
+{
+"from": 6,
+"to": 3,
+"value": 1
+},
+{
+"from": 6,
+"to": 4,
+"value": 1
+},
+{
+"from": 7,
+"to": 2,
+"value": 1
+},
+{
+"from": 7,
+"to": 4,
+"value": 1
+},
+{
+"from": 7,
+"to": 3,
+"value": 1
+},
+{
+"from": 8,
+"to": 2,
+"value": 1
+},
+{
+"from": 8,
+"to": 7,
+"value": 1
+},
+{
+"from": 8,
+"to": 4,
+"value": 1
+},
+{
+"from": 8,
+"to": 3,
+"value": 1
+},
+{
+"from": 8,
+"to": 5,
+"value": 1
+},
+{
+"from": 8,
+"to": 6,
+"value": 1
+},
+{
+"from": 9,
+"to": 4,
+"value": 1
+},
+{
+"from": 10,
+"to": 4,
+"value": 1
+},
+{
+"from": 10,
+"to": 9,
+"value": 1
+},
+{
+"from": 10,
+"to": 2,
+"value": 1
+},
+{
+"from": 11,
+"to": 3,
+"value": 1
+},
+{
+"from": 11,
+"to": 4,
+"value": 1
+},
+{
+"from": 11,
+"to": 2,
+"value": 1
+},
+{
+"from": 12,
+"to": 4,
+"value": 1
+},
+{
+"from": 12,
+"to": 2,
+"value": 1
+},
+{
+"from": 12,
+"to": 3,
+"value": 1
+},
+{
+"from": 13,
+"to": 4,
+"value": 1
+},
+{
+"from": 14,
+"to": 13,
+"value": 1
+},
+{
+"from": 14,
+"to": 4,
+"value": 1
+}
+];

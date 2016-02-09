@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <title>Network | Sizing</title>
+
+    <style type="text/css">
+        html, body {
+            font: 10pt arial;
+        }
+        #mynetwork {
+            width: 600px;
+            height: 600px;
+            border: 0px solid lightgray;
+            background: #f6f6f6;
+        }
+    </style>
+
+    <script type="text/javascript" src="js/vis.js"></script>
+    <script type="text/javascript" src="graph.json"></script>
+    <link href="css/vis.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        var network = null;
+        function draw() {
+            nodes.forEach(function(a){
+                a.title = a.label;
+                a.label = a.id;
+            });
+
+            edges.forEach(function(a){
+                a.arrows = "to";
+                delete a.value;
+            });
+
+            // Instantiate our network object.
+            var container = document.getElementById('mynetwork');
+            var data = {
+                nodes: nodes,
+                edges: edges
+            };
+
+            var options = {
+                nodes: {
+                    shape: 'circle',
+                    scaling: {
+                        min: 5,
+                        max: 20
+                    },
+                    font: {
+                        size: 12,
+                        face: 'Tahoma'
+                    }
+                },
+                edges: {
+                    color:{inherit:true},
+                    width: 0.15,
+                    smooth: {
+                        type: 'vertical',
+                        roundness: 1
+                    }
+                },
+                interaction: {
+                    hideEdgesOnDrag: true,
+                    tooltipDelay: 200
+                },
+                physics: false
+            };
+
+            network = new vis.Network(container, data, options);
+        }
+    </script>
+
+</head>
+<body onload="draw()">
+<div id="mynetwork"></div>
+</body>
+</html>
