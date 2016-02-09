@@ -53,19 +53,21 @@ angular.module('wsdlDepsApp', ['angular-ladda'])
                     font: {
                         size: 12,
                         face: 'Tahoma'
-                    }
+                    },
+                    shadow: true
                 },
                 edges: {
                     color:{inherit:true},
-                    width: 0.15,
+                    width: 0,
                     smooth: {
                         type: 'vertical',
-                        roundness: 1
+                        roundness: 1.7
                     }
+
                 },
                 interaction: {
                     hideEdgesOnDrag: true,
-                    tooltipDelay: 20
+                    tooltipDelay: 200
                 },
                 physics: false
             };
