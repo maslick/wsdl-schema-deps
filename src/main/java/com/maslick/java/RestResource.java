@@ -6,6 +6,7 @@ import com.predic8.wsdl.Definitions;
 import com.predic8.wsdl.WSDLParser;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.graph.DefaultDirectedGraph;
+import org.jgrapht.graph.DefaultEdge;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,15 +25,14 @@ public class RestResource {
         WSDLParser parser = new WSDLParser();
         Definitions defs = parser.parse(wsdlUrl);
 
-        DirectedGraph<WsdlSchema, MyDefaultEdge> wsdlGraph = test2(defs);
-        List<JSONObject> jlist = new ArrayList<JSONObject>();
+        DirectedGraph<WsdlSchema, DefaultEdge> wsdlGraph = createGraph(defs);
+        List<JSONObject> nodes = new ArrayList<JSONObject>();
         List<JSONObject> edges = new ArrayList<JSONObject>();
         JSONObject edge;
         int id = 0;
         for (WsdlSchema a : wsdlGraph.vertexSet()) {
             JSONObject obj = new JSONObject();
             obj.put("id", a.id);
-            obj.put("value", 20);
             obj.put("label", a.name);
 
             JSONArray parentlist = new JSONArray();
@@ -40,27 +40,25 @@ public class RestResource {
                 edge = new JSONObject();
                 edge.put("from", a.id);
                 edge.put("to", parent.id);
-                edge.put("value", 1);
                 edge.put("arrows", "to");
                 parentlist.put(parent.name);
                 edges.add(edge);
             }
             obj.put("parent", parentlist);
-            jlist.add(obj);
+            nodes.add(obj);
         }
         JSONObject resp = new JSONObject();
-        resp.put("nodes", jlist);
+        resp.put("nodes", nodes);
         resp.put("edges", edges);
 
         return Response.ok(resp.toString()).build();
     }
 
-    private static DirectedGraph<WsdlSchema, MyDefaultEdge> test2(Definitions defs)
+    private static DirectedGraph<WsdlSchema, DefaultEdge> createGraph(Definitions defs)
     {
-        DirectedGraph<WsdlSchema, MyDefaultEdge> g =
-                new DefaultDirectedGraph<WsdlSchema, MyDefaultEdge>(MyDefaultEdge.class);
+        DirectedGraph<WsdlSchema, DefaultEdge> g =
+                new DefaultDirectedGraph<WsdlSchema, DefaultEdge>(DefaultEdge.class);
 
-        // add the vertices
         List<WsdlSchema> schemaList = new ArrayList<WsdlSchema>();
         WsdlSchema w;
         int id = 0;
@@ -71,7 +69,7 @@ public class RestResource {
             w.imports = new ArrayList<String>();
             w.parent = new ArrayList<WsdlSchema>();
             g.addVertex(w);
-            Helper.out("* Schema: " + w.name);
+            out("* Schema: " + w.name);
             for (Import imp : schema.getImports()) {
                 for (WsdlSchema l : schemaList) {
                     if (imp.getNamespace().equals(l.name)) {
@@ -84,5 +82,9 @@ public class RestResource {
             schemaList.add(w);
         }
         return g;
+    }
+
+    public static void out(String str) {
+        System.out.println(str);
     }
 }
