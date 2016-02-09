@@ -6,6 +6,7 @@
     "jquery": "*",
     "bootstrap": "*",
     "angular": "*",
-    "vis": "*"
+    "vis": "*",
+    "angular-ladda": "~0.3.1"
   }
 }

@@ -18,10 +18,14 @@
     <script type="text/javascript" src="bower_components/vis/dist/vis.min.js"></script>
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/ladda/dist/spin.min.js"></script>
+    <script type="text/javascript" src="bower_components/ladda/dist/ladda.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ladda/dist/angular-ladda.min.js"></script>
 
     <script type="text/javascript" src="js/logic.js"></script>
     <link href="bower_components/vis/dist/vis.css" rel="stylesheet" type="text/css" />
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="bower_components/ladda/dist/ladda-themeless.min.css">
 
 </head>
 <body ng-app="wsdlDepsApp" class="container">
@@ -35,11 +39,11 @@
                         <div class="input-group">
                             <input type="text" ng-model="url" class="form-control" placeholder="Search for...">
                             <span class="input-group-btn">
-                                <button class="btn btn-success" type="button" ng-click="send()">Go!</button>
+                                <button class="btn btn-success" type="button" ng-click="send()" ladda="loginLoading">Go!</button>
                             </span>
-                        </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
-                </div><!-- /.row -->
+                        </div>
+                    </div>
+                </div>
                 <p></p>
 
                 <div class="row">

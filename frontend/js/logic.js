@@ -1,22 +1,29 @@
-angular.module('wsdlDepsApp', [])
+angular.module('wsdlDepsApp', ['angular-ladda'])
     .controller('wsdlDepsCtrl', ['$scope', '$http', function ($scope, $http) {
         $scope.url = "http://rijs.cloud.si/rijs-soap/v1/Organ?wsdl";
         $scope.resp = "Click Submit and wait for the response!";
 
 
         $scope.send = function () {
+            $scope.loginLoading = true;
             $http({
                 method: 'POST',
                 url: "http://localhost:8080/v1",
                 data: $.param({url: $scope.url}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 responseType: "json"
-            }).then(success)
+            }).then(success, error)
         };
 
         var success = function(response) {
             $scope.resp = JSON.stringify(response.data.nodes, null, 2);
             draw(response.data.nodes, response.data.edges);
+            $scope.loginLoading = false;
+        };
+
+        var error = function(response) {
+            $scope.resp = JSON.stringify(response, null, 2);
+            $scope.loginLoading = false;
         };
 
         function draw(nodes, edges) {
