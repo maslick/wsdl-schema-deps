@@ -1,0 +1,8 @@
+{
+  "name": "WSDL-Dependency-Diagram",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-connect": "*"
+  }
+}
