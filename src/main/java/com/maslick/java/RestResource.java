@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Path("/")
-@Produces(MediaType.TEXT_PLAIN)
+@Produces(MediaType.APPLICATION_JSON)
 public class RestResource {
     @POST
     @Consumes("application/x-www-form-urlencoded")
@@ -51,7 +51,7 @@ public class RestResource {
         resp.put("nodes", nodes);
         resp.put("edges", edges);
 
-        return Response.ok(resp.toString()).build();
+        return Response.ok(resp.toString(1)).build();
     }
 
     private static DirectedGraph<WsdlSchema, DefaultEdge> createGraph(Definitions defs)
