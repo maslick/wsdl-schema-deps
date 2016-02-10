@@ -54,7 +54,7 @@ public class RestResource {
         return Response.ok(resp.toString(1)).build();
     }
 
-    private static DirectedGraph<WsdlSchema, DefaultEdge> createGraph(Definitions defs)
+    private DirectedGraph<WsdlSchema, DefaultEdge> createGraph(Definitions defs)
     {
         DirectedGraph<WsdlSchema, DefaultEdge> g =
                 new DefaultDirectedGraph<WsdlSchema, DefaultEdge>(DefaultEdge.class);
